@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>데이터 입력 | MLCC Data Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="#" class="active">데이터 입력</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h2>데이터 입력</h2>
+    <label>카테고리 선택:
+      <select id="category" onchange="showForm()">
+        <option value="">--선택--</option>
+        <option value="surface">표면개질 공정</option>
+        <option value="paste">페이스트화 공정</option>
+        <option value="sheet">시트화 공정</option>
+      </select>
+    </label>
+
+    <div id="formArea"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
