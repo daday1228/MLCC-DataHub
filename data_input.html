@@ -2,29 +2,55 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>데이터 입력 | MLCC Data Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <aside class="sidebar">
-    <ul>
+
+<body class="dashboard-body">
+
+  <!-- 좌측 사이드바 -->
+  <aside class="sidebar-full">
+    <img src="header_krict.png" class="krict-logo">
+
+    <ul class="menu">
       <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="#" class="active">데이터 입력</a></li>
+      <li><a class="active" href="#">데이터 입력</a></li>
+      <li><a href="#">데이터 목록</a></li>
+      <li><a href="#">데이터 상관관계</a></li>
     </ul>
   </aside>
 
-  <main class="content">
-    <h2>데이터 입력</h2>
-    <label>카테고리 선택:
-      <select id="category" onchange="showForm()">
-        <option value="">--선택--</option>
+  <!-- 메인 -->
+  <main class="main-area">
+
+    <!-- 상단 헤더 -->
+    <header class="top-header">
+      <h1>데이터 입력</h1>
+
+      <div class="profile-area">
+        <img id="profileImg" class="profile-img">
+        <div class="profile-info">
+          <strong>작업자</strong>
+          <span id="profileId"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 카테고리 선택 -->
+    <section>
+      <label style="font-weight:bold; font-size:18px;">카테고리 선택:</label>
+      <select id="category" onchange="showForm()" class="input-select">
+        <option value="">-- 선택 --</option>
         <option value="surface">표면개질 공정</option>
         <option value="paste">페이스트화 공정</option>
         <option value="sheet">시트화 공정</option>
       </select>
-    </label>
+    </section>
 
-    <div id="formArea"></div>
+    <!-- 폼이 표시될 자리 -->
+    <section id="formArea" style="margin-top:30px;"></section>
+
   </main>
 
   <script src="script.js"></script>
