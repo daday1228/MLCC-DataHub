@@ -5,9 +5,17 @@ const users = {
   "2222": "Y"
 };
 
-// 로그인 로직
+// 이미지 매핑 (너가 준 파일명 그대로 사용)
+const profileImages = {
+  "K": "experimenter_K.png",
+  "D": "experimenter_D.png",
+  "Y": "experimenter_Y.png"
+};
+
+// 로그인 기능
 function login() {
   const pw = document.getElementById("password").value;
+
   if (users[pw]) {
     sessionStorage.setItem("user", users[pw]);
     window.location.href = "dashboard.html";
@@ -16,52 +24,18 @@ function login() {
   }
 }
 
-// 로그인 상태 표시
-window.addEventListener("DOMContentLoaded", () => {
-  const initialSpan = document.getElementById("userInitial");
-  if (initialSpan) {
-    const user = sessionStorage.getItem("user");
-    initialSpan.textContent = user ? user : "로그인 필요";
+// 페이지 로딩되면 프로필 정보 표시
+document.addEventListener("DOMContentLoaded", () => {
+  const user = sessionStorage.getItem("user");
+
+  if (document.getElementById("profileImg")) {
+    if (!user) {
+      window.location.href = "index.html";
+      return;
+    }
+
+    document.getElementById("profileImg").src = profileImages[user];
+    document.getElementById("profileName").textContent = "작업자";
+    document.getElementById("profileId").textContent = "ID: " + user;
   }
 });
-
-// 카테고리별 폼 표시 (간단 프로토타입)
-function showForm() {
-  const c = document.getElementById("category").value;
-  const area = document.getElementById("formArea");
-  area.innerHTML = "";
-
-  if (c === "surface") {
-    area.innerHTML = `
-      <h3>표면개질 공정</h3>
-      <label>실험일: <input type="date"></label><br>
-      <label>원료 ID: <input type="text"></label><br>
-      <label>표면개질 ID: <input type="text"></label><br>
-      <label>비고: <input type="text"></label><br>
-      <h4>공정 조건</h4>
-      <label>원료 양 <input type="text"></label>
-      <label>개질제 양 <input type="text"></label>
-      <button>저장(예시)</button>
-    `;
-  } else if (c === "paste") {
-    area.innerHTML = `
-      <h3>페이스트화 공정</h3>
-      <label>실험일: <input type="date"></label><br>
-      <label>표면개질 ID: <input type="text"></label><br>
-      <label>페이스트 ID: <input type="text"></label><br>
-      <h4>공정 조건</h4>
-      <label>배합비 <input type="text"></label>
-      <button>저장(예시)</button>
-    `;
-  } else if (c === "sheet") {
-    area.innerHTML = `
-      <h3>시트화 공정</h3>
-      <label>실험일: <input type="date"></label><br>
-      <label>페이스트화 ID: <input type="text"></label><br>
-      <label>시트화 ID: <input type="text"></label><br>
-      <h4>공정 조건</h4>
-      <label>캐스팅 두께 <input type="text"></label>
-      <button>저장(예시)</button>
-    `;
-  }
-}

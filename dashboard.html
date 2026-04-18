@@ -2,13 +2,18 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MLCC Data Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <aside class="sidebar">
-    <h2>KRICT</h2>
-    <ul>
+
+<body class="dashboard-body">
+
+  <!-- 좌측 사이드바 -->
+  <aside class="sidebar-full">
+    <img src="header_krict.png" class="krict-logo">
+
+    <ul class="menu">
       <li><a href="#" class="active">Dashboard</a></li>
       <li><a href="data_input.html">데이터 입력</a></li>
       <li><a href="#">데이터 목록</a></li>
@@ -16,22 +21,37 @@
     </ul>
   </aside>
 
-  <main class="content">
-    <header>
+  <!-- 메인 영역 -->
+  <main class="main-area">
+
+    <!-- 상단 고정 헤더 -->
+    <header class="top-header">
       <h1>MLCC Data Hub</h1>
-      <p>실험자: <span id="userInitial"></span></p>
+
+      <div class="profile-area">
+        <img id="profileImg" class="profile-img">
+        <div class="profile-info">
+          <strong id="profileName"></strong>
+          <span id="profileId"></span>
+        </div>
+      </div>
     </header>
 
-    <section class="dashboard-grid">
-      <div class="card">
-        <h3>Today's Data</h3>
-        <p>이곳엔 요약 통계 카드가 표시됩니다.</p>
+    <!-- 대시보드 내용 -->
+    <section class="dashboard-content">
+
+      <div class="card big">
+        <h2>Today's Data</h2>
+        <p>요약 통계가 여기 표시됩니다. (프로토타입)</p>
       </div>
-      <div class="card">
-        <h3>Visitor Insights</h3>
-        <p>그래프 자리 (프로토타입에서는 고정 이미지로 대체)</p>
+
+      <div class="card big">
+        <h2>Visitor Insights</h2>
+        <img src="graph_example.png" class="sample-graph">
       </div>
+
     </section>
+
   </main>
 
   <script src="script.js"></script>
